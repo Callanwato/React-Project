@@ -16,14 +16,46 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
               your ai Prompt
             </span>
 
+            <input
+              value={post.tag}
+              onChange={(e) => setPost({...post, tag:
+              e.target.value})}
+              placeholder='#tag'
+              required
+              className ="form_input"
+              />
+          </label>
+          <label>
+            <span className='font-satoshi'>
+              Tag {' '}
+              <span className='font-normal'>#product</span>
+            </span>
+
             <textarea
               value={post.prompt}
               onChange={(e) => setPost({...post,
               prompt: e.target.value})}
               placeholder='Enter Prompt'
               required
-              classNamw ="form_textarea"></textarea>
+              className ="form_textarea"
+              />
           </label>
+
+          <div className='flex-end mx-3 mb-5 gap-4'>
+            <Link href={'/'} className='text-gray-500'
+            cancel>
+            </Link>
+
+            <button
+              type='submit'
+              disabled={submitting}
+              className='px-5 py-5 text-sm bg-primary-orange rounded-full text-white'
+            >
+              {submitting? '${type}...' :type}
+            </button>
+
+
+          </div>
       </form>
     </section>
   )
